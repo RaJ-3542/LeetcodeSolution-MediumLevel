@@ -1,0 +1,39 @@
+class Solution {
+public:
+    bool Arth(vector<int> arr){
+        sort(arr.begin(),arr.end());
+        int n = arr.size()-1;
+        int def = arr[1]-arr[0];
+        int j = 2;
+        while(j<=n){
+            if(arr[j]-arr[j-1] != def){
+                return false;
+            }
+            j++;
+        }
+        return true;
+    }
+    
+    vector<bool> checkArithmeticSubarrays(vector<int>& nums, vector<int>& l, vector<int>& r) {
+        
+        int len = l.size();
+        vector<bool> result;
+        
+        
+       
+        
+        int i = 0;
+        while(i<len){
+            auto start = nums.begin()+l[i];
+            auto end = nums.begin()+r[i]+1;
+            vector<int> answer(r[i]-l[i]+1);
+            copy(start, end, answer.begin());
+            
+            bool res = Arth(answer);
+            result.push_back(res);
+            i++;
+        }
+        return result;
+        
+    }
+};
