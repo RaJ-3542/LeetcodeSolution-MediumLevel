@@ -1,0 +1,63 @@
+class Solution {
+public:
+    int minimumRefill(vector<int>& plants, int capacityA, int capacityB) {
+
+        if(plants.size()==1 && (capacityA >=plants[0] || capacityB >= plants[0])){
+            return 0;
+        }
+
+        int A = capacityA;
+        int B = capacityB;
+
+        int i = 0, res = 0;
+        int j = plants.size()-1;
+        // int cA = 0;
+        // int cB = 0;
+
+        while(i<=j){
+            if(i==j){
+
+                // cout<<" cond. "<<endl;
+                if(capacityA<plants[i] && capacityB<plants[i]){
+                    res++;
+                }
+                break;
+            }
+
+            // cout<<i<<" : "<<capacityA<<" & "<<j<<" : "<<capacityB<<endl;
+
+            
+            if(capacityA < plants[i]){
+                // cout<<"A fills"<<endl;
+                
+
+
+                res++;
+                capacityA = A;
+                capacityA -= plants[i];
+            }
+            else{
+                
+                capacityA -= plants[i];
+                
+            }
+            if(capacityB<plants[j]){
+                // cout<<"B fills"<<endl;
+                res++;
+                capacityB = B;
+                capacityB -= plants[j];
+            }
+            else{
+                capacityB -= plants[j];
+                
+            }
+
+            i++;
+            j--;
+            
+        }
+
+        
+        return res;
+    }
+};
