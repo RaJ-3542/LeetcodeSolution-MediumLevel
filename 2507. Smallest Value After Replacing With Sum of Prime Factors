@@ -1,0 +1,32 @@
+class Solution {
+public:
+    int primeFactors(int n){
+        int c = 2;
+        int res =0;
+        
+        while(n>1){
+            
+            if(n%c==0){
+                res+=c;
+                n/=c;
+                
+            }
+            else{
+                c++;
+            }
+        }
+        return res;
+        
+    }
+    int smallestValue(int n) {
+        int a = n;
+        int res = primeFactors(n);
+        
+        while(res!=n){
+            n = res;
+            res = primeFactors(n);
+        }
+        return res;
+        
+    }
+};
