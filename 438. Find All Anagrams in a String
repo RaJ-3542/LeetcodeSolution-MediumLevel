@@ -1,0 +1,24 @@
+class Solution {
+ public:
+  vector<int> findAnagrams(string s, string p) {
+    vector<int> result;
+    vector<int> charCount(128);
+    int required = p.length();
+
+    for (const char c : p)
+      ++charCount[c];
+
+    for (int left = 0, right = 0; right < s.length(); ++right) {
+      if (--charCount[s[right]] >= 0)
+        --required;
+      while (required == 0) {
+        if (right - left + 1 == p.length())
+          result.push_back(left);
+        if (++charCount[s[left++]] > 0)
+          ++required;
+      }
+    }
+
+    return result;
+  }
+};
