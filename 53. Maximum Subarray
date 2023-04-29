@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) {
+
+        int maxx = INT_MIN;
+        int maxx2 = 0;
+
+        for(int i = 0; i<nums.size();i++){
+
+            maxx2 = maxx2+nums[i];
+            if(maxx<maxx2){
+                maxx = maxx2;
+            }
+            if(maxx2<0){
+                maxx2 = 0;
+            }
+
+
+        }
+        
+        return maxx;
+    }
+};
