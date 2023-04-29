@@ -1,0 +1,541 @@
+class Solution {  
+
+  
+
+public:  
+
+  
+
+    int result(int maxx, int b, int check, int a,vector<vector<int>> value, int cols,vector<vector<int>>& mat){  
+
+  
+
+          
+
+  
+
+//         map<int,int> mp;  
+
+  
+
+          
+
+  
+
+//         for(int i = 0; i <nums.size()-1;i++){  
+
+  
+
+//             mp[nums[i]+nums[i+1]]++;  
+
+  
+
+//         }  
+
+  
+
+          
+
+  
+
+//         for(auto it : mp){  
+
+  
+
+//             if(it.second>1){  
+
+  
+
+//                 return true;  
+
+  
+
+//             }  
+
+  
+
+//         }  
+
+  
+
+//         return false;  
+
+  
+
+          
+
+  
+
+        for(int i = 0; i <=check;i++){  
+
+  
+
+            int count = 0;  
+
+  
+
+            set<int> settt;  
+
+  
+
+            int get = count;  
+
+  
+
+            for(int k = 0; k <b;k++){  
+
+  
+
+                if(value[i][k]==1){  
+
+  
+
+                         settt.insert(k);  
+
+  
+
+                         count++;  
+
+  
+
+                     }  
+
+  
+
+            }  
+
+  
+
+              
+
+  
+
+        // for(auto it : mp){  
+
+  
+
+        //     if(it.second>1){  
+
+  
+
+        //         return true;  
+
+  
+
+        //     }  
+
+  
+
+        // }  
+
+  
+
+            if(count == cols){  
+
+  
+
+                for(int l=0;l<a;l++){  
+
+  
+
+                       bool yes=0;   
+
+  
+
+                        for(int j=0;j<b;j++){  
+
+  
+
+                            if(settt.count(j)==0){  
+
+  
+
+                                if(mat[l][j]==1){  
+
+  
+
+                                    yes=1;}  
+
+  
+
+                            }  
+
+  
+
+                        }  
+
+  
+
+                       if(yes==0){  
+
+  
+
+                           get++; }  
+
+  
+
+                }  
+
+  
+
+            }  
+
+  
+
+   
+
+  
+
+            maxx = max(get,maxx);  
+
+  
+
+        }  
+
+  
+
+        return maxx;  
+
+  
+
+   
+
+  
+
+    }  
+
+  
+
+    int maximumRows(vector<vector<int>>& mat, int cols) {  
+
+  
+
+        // int i = 0;  
+
+  
+
+        // if(mat[i].size()==cols){  
+
+  
+
+        //     return mat[i].size()*mat.size();  
+
+  
+
+        // }  
+
+  
+
+        int check = pow(2,mat[0].size());  
+
+  
+
+        // chcek--;  
+
+  
+
+          
+
+  
+
+        check--;  
+
+  
+
+        int a = mat.size(), b = mat[0].size();  
+
+  
+
+   
+
+  
+
+        vector<vector<int>> value(check+1, vector<int>(b,0));  
+
+  
+
+   
+
+  
+
+        int i = 0;  
+
+  
+
+        while(i<=check){  
+
+  
+
+            int xray = i;  
+
+  
+
+            for(int k = 0;k <b;k++){  
+
+  
+
+                if((i&(1<<k))>=1){  
+
+  
+
+                    value[i][k] = 1;  
+
+  
+
+                }  
+
+  
+
+            }  
+
+  
+
+            i++;  
+
+  
+
+        }  
+
+  
+
+   
+
+  
+
+        int maxx = 0;  
+
+  
+
+        // int res = result(int maxxx, int b, int check, int a,vector<vector<int>> value, int cols,vector<vector<int>>& mat);  
+
+  
+
+   
+
+  
+
+        // return res;  
+
+         
+
+        //         map<int,int> mp;  
+
+  
+
+          
+
+  
+
+//         for(int i = 0; i <nums.size()-1;i++){  
+
+  
+
+//             mp[nums[i]+nums[i+1]]++;  
+
+  
+
+//         }  
+
+  
+
+          
+
+  
+
+//         for(auto it : mp){  
+
+  
+
+//             if(it.second>1){  
+
+  
+
+//                 return true;  
+
+  
+
+//             }  
+
+  
+
+//         }  
+
+  
+
+//         return false;  
+
+  
+
+          
+
+  
+
+        for(int i = 0; i <=check;i++){  
+
+  
+
+            int count = 0;  
+
+  
+
+            set<int> settt;  
+
+  
+
+            int get = count;  
+
+  
+
+            for(int k = 0; k <b;k++){  
+
+  
+
+                if(value[i][k]==1){  
+
+  
+
+                         settt.insert(k);  
+
+  
+
+                         count++;  
+
+  
+
+                     }  
+
+  
+
+            }  
+
+  
+
+              
+
+  
+
+        // for(auto it : mp){  
+
+  
+
+        //     if(it.second>1){  
+
+  
+
+        //         return true;  
+
+  
+
+        //     }  
+
+  
+
+        // }  
+
+  
+
+            if(count == cols){  
+
+  
+
+                for(int l=0;l<a;l++){  
+
+  
+
+                       bool yes=0;   
+
+  
+
+                        for(int j=0;j<b;j++){  
+
+  
+
+                            if(settt.count(j)==0){  
+
+  
+
+                                if(mat[l][j]==1){  
+
+  
+
+                                    yes=1;}  
+
+  
+
+                            }  
+
+  
+
+                        }  
+
+  
+
+                       if(yes==0){  
+
+  
+
+                           get++; }  
+
+  
+
+                }  
+
+  
+
+            }  
+
+  
+
+   
+
+  
+
+            maxx = max(get,maxx);  
+
+  
+
+        }  
+
+         
+
+        return maxx; 
+
+  
+
+   
+
+  
+
+   
+
+  
+
+   
+
+  
+
+   
+
+  
+
+           
+
+  
+
+          
+
+  
+
+          
+
+  
+
+          
+
+  
+
+    }  
+
+  
+
+}; 
