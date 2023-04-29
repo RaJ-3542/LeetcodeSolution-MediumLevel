@@ -1,0 +1,51 @@
+class Solution {
+public:
+    int maximumCostSubstring(string s, string chars, vector<int>& vals) {
+        
+        vector<int> values;
+        
+        for(auto a : s){
+            bool flag = false;
+            for(int j = 0; j <chars.size();j++){
+                if(a==chars[j]){
+                    flag = true;
+                    values.push_back(vals[j]);
+                }
+            }
+            if(flag == false){
+                
+                values.push_back(int(a)-96);
+                
+            }
+        }
+        
+      
+        
+        int maxx = INT_MIN;
+        int maxx2 = 0;
+
+        for(int i = 0; i<values.size();i++){
+
+            maxx2 = maxx2+values[i];
+            if(maxx<maxx2){
+                maxx = maxx2;
+            }
+            if(maxx2<0){
+                maxx2 = 0;
+            }
+
+
+        }
+        if(maxx<0){
+            return 0;
+        }
+        
+        return maxx;
+        
+        
+        
+        
+    
+        
+    }
+};
