@@ -1,0 +1,25 @@
+class Solution {
+public:
+    int numOfPairs(vector<string>& nums, string target) {
+        
+        int len = target.size();
+        int res = 0;
+        map<string, int> count;
+        
+        // if (k >= len)
+        //     continue;
+
+        for (const string& num : nums) {
+          int k = num.size();
+          if (k >= len)
+            continue;
+          if (target.substr(0, k) == num)
+            res += count[target.substr(k)];
+          if (target.substr(len - k) == num)
+            res += count[target.substr(0, len - k)];
+          ++count[num];
+        }
+
+        return res;
+    }
+};
