@@ -1,0 +1,60 @@
+class Solution {
+public:
+    vector<string> letterCasePermutation(string s) {
+
+        vector<string> res;
+        vector<int> idx;
+        string str = s;
+        res.push_back(s);
+
+        
+        for(int i = 0; i<s.size();i++){
+            if(isalpha(s[i])){
+
+                idx.push_back(i);
+
+            }
+        }
+
+        char c = toupper('b');
+        cout<<c<<endl;
+
+        unsigned int op = pow(2,idx.size());
+        for(int cnt = 1 ; cnt<op;cnt++){
+            for(int j = 0; j<idx.size();j++){
+                if(cnt & (1<<j)){
+
+                    cout<<idx[j]<<" ";
+                    cout<<" Before "<<s<<endl;
+
+
+                    if(isupper(s[idx[j]])){
+                        s[idx[j]] = tolower(s[idx[j]]);
+                        cout<<" In "<<" : "<<s<<endl;
+                        
+                        
+                    }
+                    else{
+                        s[idx[j]] = toupper(s[idx[j]]);
+                        cout<<" In "<<" : "<<s<<endl;
+                        
+                        
+                    }
+
+                }
+                
+                
+            }
+            res.push_back(s);
+            s = str;
+            cout<<endl;
+        }
+
+
+
+
+
+        return res;
+        
+    }
+};
