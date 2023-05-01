@@ -1,0 +1,14 @@
+class Solution(object):
+    def complexNumberMultiply(self, num1, num2):
+   
+        c = int(num2[:num2.index('+')])
+        d = int(num2[num2.index('+')+1:-1])
+ 
+
+        a = int(num1[:num1.index('+')])
+        b = int(num1[num1.index('+')+1:-1])
+
+
+        return str((a*c)-(d*b))+"+"+str((a*d+b*c))+"i"
+
+       
