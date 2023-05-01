@@ -1,0 +1,20 @@
+class Solution {
+public:
+    vector<vector<int>> reconstructQueue(vector<vector<int>>& people) {
+        
+        vector<vector<int>> res;
+
+        sort(people.begin(),people.end(), [](const auto& x, const auto& y){
+          return x[0] == y[0] ? x[1]<y[1] : x[0]>y[0];  
+        });
+        
+
+        
+        for(const auto& a : people){
+            res.insert(res.begin()+a[1],a);
+        }
+        
+        return res;
+        
+    }
+};
