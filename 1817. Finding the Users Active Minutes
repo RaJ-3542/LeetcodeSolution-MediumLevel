@@ -1,0 +1,29 @@
+class Solution {
+public:
+    vector<int> findingUsersActiveMinutes(vector<vector<int>>& logs, int k) {
+        vector<int> res(k);
+        sort(logs.begin(),logs.end());
+        
+        // for(int i = 0; i <logs.size();i++){
+        //     cout<<logs[i][0]<<" : "<<logs[i][1]<<endl;
+        // }
+        
+        unordered_map<int, unordered_set<int>> m;
+            
+        
+        // int a = logs[0][0];
+        
+        for(const auto& i : logs){
+            m[i[0]].insert(i[1]);
+        }
+        
+        for(const auto& [_, mins] : m){
+            ++res[mins.size()-1];
+        }
+        
+        
+        
+        
+        return res;
+    }
+};
