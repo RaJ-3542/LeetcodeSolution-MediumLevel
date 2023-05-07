@@ -1,0 +1,24 @@
+class Solution {
+public:
+    vector<vector<int>> diagonalSort(vector<vector<int>>& mat) {
+        
+        int n = mat[0].size();
+        
+        unordered_map<int, priority_queue<int>> res;
+
+        
+        for(int i = 0; i <mat.size();++i){
+            for(int j = 0; j<n;j++){
+                res[i-j].push(mat[i][j]);
+            }
+        }
+
+        
+        for(int j = mat.size()-1; j>=0;j--){
+            for(int k = n-1; k>=0;k--){
+                mat[j][k] = res[j-k].top(), res[j-k].pop();
+            }
+        }
+        return mat;
+    }
+};
