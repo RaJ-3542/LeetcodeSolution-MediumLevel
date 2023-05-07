@@ -1,0 +1,45 @@
+class Solution {
+public:
+    vector<vector<int>> groupThePeople(vector<int>& g) {
+        map<int,int> mp;
+        
+        for(int i = 0; i <g.size();i++){
+            mp[g[i]]++;
+        }
+        int size = 0;
+        
+        for(auto it : mp){
+            size+= it.second/it.first;
+        }
+        
+        vector<vector<int>> res(size);
+        int j = 0;
+        for(auto it : mp){
+           
+            int count = 0;
+            for(int i = 0; i <g.size();i++){
+                if(g[i]==it.first){
+                    count++;
+                    if(count>it.first){
+                        j++;
+                        count = 1;
+                        
+                    }
+                    res[j].push_back(i);
+                        
+                    
+                   
+                   
+                }
+                
+            
+            }
+            j++;
+        }
+        
+        return res;
+    
+        
+        
+    }
+};
