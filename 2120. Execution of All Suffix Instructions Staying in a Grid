@@ -1,0 +1,75 @@
+class Solution {
+public:
+    bool movement(int a,int b,int n,char c){
+        if(c=='R'){
+            if((b+1)>n-1 || (b+1)<0){
+                return false;
+            }
+        
+        }
+        else if(c=='L'){
+            if((b-1)>n-1 || (b-1)<0){
+                return false;
+            }
+        
+        }
+        else if(c=='D'){
+            if((a+1)>n-1 || (a+1)<0){
+                return false;
+            }
+            
+        }
+        else if(c=='U'){
+            if((a-1)>n-1 || (a-1)<0){
+                return false;
+            }
+            
+        }
+        return true;
+    }
+    
+    vector<int> executeInstructions(int n, vector<int>& startPos, string s) {
+        vector<int> c;
+        
+        
+        int i = 0;
+        
+        while(i<s.size()){
+            int count = 0;
+            // cout<<"loop"<<endl;
+            int a = startPos[0];
+            int b = startPos[1];
+            for(int j = i ; j <s.size();j++){
+                if(movement(a,b,n,s[j])==true){
+                    
+                    if(s[j]=='R'){
+                        b+=1;
+
+                    }
+                    else if(s[j]=='L'){
+                        b-=1;
+
+                    }
+                    else if(s[j]=='D'){
+                        a+=1;
+
+                    }
+                    else if(s[j]=='U'){
+                        a-=1;
+                    }
+                    
+                    // cout<<s[j]<<" "<<count<<endl;
+                    // cout<<"first : "<<a<<" : "<<"second : "<<b<<endl;
+                    count++;
+                }
+                else{
+                    break;
+                }
+            }
+            c.push_back(count);
+            i++;
+        }
+        
+        return c;
+    }
+};
