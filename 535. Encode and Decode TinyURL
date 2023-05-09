@@ -1,0 +1,34 @@
+class Solution {
+public:
+    string alphs = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm1234567890";
+    unordered_map<string,string> U2C;
+    unordered_map<string,string> C2U;
+
+    // Decodes a shortened URL to its original URL.
+    string decode(string shortUrl) {
+        
+        return C2U[shortUrl.substr(19)];
+        
+        
+    }
+    // Encodes a URL to a shortened URL.
+    string encode(string longUrl) {
+        while(!U2C.count(longUrl)){
+            string str;
+            for(int j = 1; j<7;j++){
+                str += alphs[rand() % alphs.size()];
+            }
+            if(!C2U.count(str)){
+                C2U[str] = longUrl;
+                U2C[longUrl] = str;
+                return "http://tinyurl.com/" + str;
+            }
+        }
+        throw;
+        
+    }
+};
+
+// Your Solution object will be instantiated and called as such:
+// Solution solution;
+// solution.decode(solution.encode(url));
