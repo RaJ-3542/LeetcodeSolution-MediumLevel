@@ -1,0 +1,27 @@
+class Solution {
+public:
+    vector<int> countPoints(vector<vector<int>>& points, vector<vector<int>>& queries) {
+        vector<int> result;
+        
+        for(int j = 0; j <queries.size();j++){
+            int r = queries[j][2]*queries[j][2];
+            int count = 0;
+            int x2 = queries[j][0];
+            int y2 = queries[j][1];
+            for(int i = 0; i <points.size();i++){
+                int r1 = abs(x2-points[i][0]);
+                int r2 = abs(y2-points[i][1]);
+                int res = pow(r1,2)+pow(r2,2);
+                // cout<<res<<endl;
+                
+                if(res<=r){
+                    count++;
+                }
+            }
+            result.push_back(count);
+        }
+        
+        return result;
+        
+    }
+};
