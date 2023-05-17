@@ -6,6 +6,8 @@ class Solution:
         # print(list)
         res = ""
 
+
+
         for words in list:
             res+=words + " "
 
