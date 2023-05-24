@@ -3,6 +3,7 @@ public:
     vector<string> letterCasePermutation(string s) {
 
         vector<string> res;
+
         vector<int> idx;
         string str = s;
         res.push_back(s);
